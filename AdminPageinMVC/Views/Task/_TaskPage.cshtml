@@ -1,0 +1,61 @@
+﻿@model System.Collections.Generic.List<AdminPageinMVC.Dto.TaskDTO>
+
+@{
+    Layout = "~/Views/Shared/_Task.cshtml";
+}
+<table class="user-table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Lesson Id</th>
+        <th>DateTime</th>
+        <th>Process</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var homework in Model)
+    {
+        <tr>
+            <form action="@Url.Action("UpdateTask", "Task")" method="post">
+                <td>
+                    <span>@homework.Id</span>
+                </td>
+                <td>
+                    <span class="view-mode">@homework.Title</span>
+                    <input type="text" class="edit-mode hide" name="title" value="@homework.Title" />
+                    <input type="hidden" name="id" value="@homework.Id" />
+                </td>
+                <td>
+                    <span class="view-mode">@homework.Description</span>
+                    <input type="text" class="edit-mode hide" name="description" value="@homework.Description" />
+                </td>
+                <td>
+                    <span class="view-mode">@homework.Lesson.Id</span>
+                    <input type="text" class="edit-mode hide" name="lessonId" value="@homework.Lesson.Id" />
+                </td>
+                <td>
+                    <span class="view-mode">@homework.DateTime</span>
+                    <input type="text" class="edit-mode hide" name="lessonId" value="@homework.DateTime" />
+                </td>
+                <td>
+                    <span class="view-mode">@homework.Process</span>
+                    <input type="text" class="edit-mode hide" name="lessonId" value="@homework.Process" />
+                </td>
+                <td>
+                    <a class="btn-update">Update</a>
+                    <button class="btn-confirm hide" asp-controller="Task" asp-action="UpdateTask" type="submit">Confirm</button>
+                    <button class="btn-delete" asp-controller="Task" asp-action="DeleteTask" type="submit">Delete</button>
+                    <a class="btn-cancel hide">Cancel</a>
+                </td>
+            </form>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div class="center-align">
+    <a class="waves-effect waves-light btn" href="@Url.Action("AddTask", "Task")">Create New Education</a>
+</div>

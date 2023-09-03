@@ -1,0 +1,25 @@
+﻿@model AdminPageinMVC.Dto.LessonDTO
+@{
+    Layout = "~/Views/Shared/_Lesson.cshtml";
+}
+<form action="@Url.Action("UpdateLesson", "Lesson")" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+
+    <div>
+        <input class="input" type="text" id="Name" name="title" placeholder="Title" value="@Model.Title" />
+    </div>
+
+    <div>
+        <input class="input" type="text" id="videoUrl" name="videoUrl" placeholder="VideoUrl" value="@Model.VideoUrl" />
+    </div>
+
+    <div>
+        <input class="input" type="text" id="information" name="information" placeholder="Information" value="@Model.Information" />
+    </div>
+    <div>
+        <input class="input" type="text" id="courseId" name="courseId" placeholder="courseId" value="@Model.Course.Id" />
+    </div>
+    <div>
+        <button type="submit" style="margin-top:20px" class="confirm">Update</button>
+    </div>
+</form>

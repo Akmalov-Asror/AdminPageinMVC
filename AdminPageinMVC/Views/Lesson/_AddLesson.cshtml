@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/_Lesson.cshtml";
+}
+<form class="update-form" method="post" action="@Url.Action("AddLesson", "Lesson")">
+    <input type="text" name="title" class="input" placeholder="Title" />
+    <input type="text" name="videoUrl" class="input" placeholder="VideoUrl" />
+    <input type="text" name="information" class="input" placeholder="Information" />
+    <input type="text" name="courseId" class="input" placeholder="Course Id" />
+    <div class="btns">
+        <button class="confirm" type="submit">Confirm</button>
+        <button method="get" asp-controller="Lesson" asp-action="GetAllLesson" class="cancel">Cancel</button>
+    </div>
+</form>
+
+
+
+

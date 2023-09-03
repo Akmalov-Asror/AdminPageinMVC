@@ -1,0 +1,26 @@
+﻿@model AdminPageinMVC.Entity.Course;
+
+@{
+    Layout = "~/Views/Shared/_Course.cshtml";
+}
+<h2>Edit Teacher Information</h2>
+
+<form action="@Url.Action("UpdateCourse", "Course")" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+
+    <div>
+        <input class="input" type="text" id="Name" name="image" placeholder="ImageUrl" value="@Model.ImageUrl" />
+    </div>
+
+    <div>
+        <input class="input" type="text" id="ImgUrl" name="name" placeholder="Price" value="@Model.Price" />
+    </div>
+
+    <div>
+        <input class="input" type="text" id="Type" name="type" placeholder="Description" value="@Model.Description" />
+    </div>
+
+    <div>
+        <button type="submit" style="margin-top:20px" class="confirm">Update</button>
+    </div>
+</form>

@@ -1,0 +1,76 @@
+﻿@model AdminPageinMVC.Entity.Test
+
+@{
+    Layout = "~/Views/Shared/_Test.cshtml";
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Task</title>
+    <style>
+        /* Your CSS code here */
+        .update-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+        }
+
+        .input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-confirm {
+            background-color: green; /* Adjust colors as needed */
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px 10px;
+            margin-right: 5px;
+        }
+
+        .btn-cancel {
+            background-color: red; /* Adjust colors as needed */
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px 10px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<form method="post" action="@Url.Action("UpdateTest", "Test")">
+    <input type="hidden" name="id" value="@Model.Id" />
+
+    <div class="update-form">
+        <label for="question">Question:</label>
+        <input type="text" class="input" id="question" name="question" value="@Model.Question" required>
+    </div>
+    <div class="update-form">
+        <label for="options">Options:</label>
+        @for (int i = 0; i < Model.Options.Count; i++)
+        {
+            <input type="text" class="input" name="options[@i]" value="@Model.Options[i]" required>
+        }
+    </div>
+    <div class="update-form">
+        <label for="right">Right Option:</label>
+        <input type="text" class="input" id="right" name="right" value="@Model.RightOption" required>
+    </div>
+    <button type="submit" class="confirm">Update Test</button>
+</form>
+</body>
+
+
+
+
+

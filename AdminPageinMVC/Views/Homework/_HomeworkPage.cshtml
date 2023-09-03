@@ -1,0 +1,50 @@
+﻿@model List<AdminPageinMVC.Dto.HomeworkDTO>
+@{
+    Layout = "~/Views/Shared/_Homework.cshtml";
+}
+<table class="user-table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Img Url</th>
+            <th>Description</th>
+            <th>Task Id</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var homework in Model)
+        {
+            <tr>
+                <form action="@Url.Action("UpdateHomework", "Homework")" method="post">
+                <td>
+                    <span>@homework.Id</span>
+                </td>
+                <td>
+                    <span class="view-mode">@homework.ImageUrl</span>
+                    <input type="text" class="edit-mode hide" name="img" value="@homework.ImageUrl" />
+                    <input type="hidden" name="id" value="@homework.Id" />
+                </td>
+                <td>
+                    <span class="view-mode">@homework.Description</span>
+                    <input type="text" class="edit-mode hide" name="description" value="@homework.Description" />
+                </td>
+                <td>
+                    <span class="view-mode">@homework.Task.Id</span>
+                    <input type="text" class="edit-mode hide" name="taskId" value="@homework.Task.Id" />
+                </td>
+                <td>
+                    <a class="btn-update">Update</a>
+                    <button class="btn-confirm hide" asp-controller="Homework" asp-action="UpdateHomework" type="submit">Confirm</button>
+                    <button class="btn-delete" asp-controller="Homework" asp-action="DeleteHomework" type="submit">Delete</button>
+                    <a class="btn-cancel hide">Cancel</a>
+                </td>
+                </form>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="center-align">
+    <a class="waves-effect waves-light btn" href="@Url.Action("AddHomework", "Homework")">Create New Education</a>
+</div>

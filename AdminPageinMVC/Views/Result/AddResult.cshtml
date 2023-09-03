@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_Result.cshtml";
+}
+
+<head>
+    <style>
+		option {
+			background: #1f1f1f;
+			color: white;
+		}
+	</style>
+</head>
+
+<form method="post" asp-action="AddResult" asp-controller="Result">
+    <div class="update-form">
+        <label for="educationId">Education:</label>
+        <select class="form-control" id="educationId" name="educationId" required style="background:none; color:white; padding:5px; margin-left:5px; margin-bottom:10px">
+            <option value="">Select an education</option>
+            @foreach (var education in ViewBag.EducationList)
+            {
+                <option value="@education.Id">@education.Title</option>
+            }
+        </select>
+    </div>
+    <div class="update-form">
+        <label for="userId">User:</label>
+        <select class="form-control" id="userId" name="userId" required style="background:none; color:white; padding:5px; margin-left:5px; margin-bottom:10px">
+            <option value="">Select a user</option>
+            @foreach (var user in ViewBag.UserList)
+            {
+                <option value="@user.Id">@user.FullName</option>
+            }
+        </select>
+    </div>
+    <div class="update-form">
+        <label for="url">URL:</label>
+        <input type="text" class="input" id="url" name="url" required>
+    </div>
+    <button type="submit" class="confirm">Add Result</button>
+</form>

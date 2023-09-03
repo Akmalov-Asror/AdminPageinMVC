@@ -1,0 +1,8 @@
+﻿@{
+    Layout = "~/Views/Shared/_Teacher.cshtml";
+}
+
+<form class="user__result" method="post" action="@Url.Action("DeleteTeacher", "Teacher")">
+    <input type="text" name="id" placeholder="Teacher id" class="get__inptut" />
+    <button class="confirm" type="submit">Delete</button>
+</form>

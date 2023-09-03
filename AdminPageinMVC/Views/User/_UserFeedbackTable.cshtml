@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body {
+			background-color: #1f1f1f;
+		}
+
+		#null {
+			text-align: center;
+		}
+
+		.course__table {
+			background-color: inherit;
+			color: white;
+			width: 100%;
+			border-collapse: collapse;
+			border: 1px solid white;
+		}
+
+		.course__table th,
+		.course__table td {
+			padding: 20px;
+			border: 1px solid white;
+		}
+
+		.course__table th {
+			background-color: #333;
+		}
+
+		/* Remove left border from UserId column */
+		.course__table td:nth-child(4) {
+			border-left: none;
+		}
+	</style>
+</head>
+<body>
+<table class="course__table">
+	<thead>
+	<tr>
+		<th>Id</th>
+		<th>Description</th>
+		<th>EducationId</th>
+		<th>UserId</th>
+	</tr>
+	</thead>
+	<tbody>
+	@if (Model == null || Model.Count == 0)
+	{
+		<tr>
+			<td colspan="4" id="null">User don't have feedbacks</td>
+		</tr>
+	}
+	else
+	{
+		@foreach (var user in Model)
+		{
+			<tr>
+				<td>
+					<span>@user.Id</span>
+				</td>
+				<td>
+					<span>@user.Description</span>
+				</td>
+				<td>
+					<span>@user.EducationId</span>
+				</td>
+				<td>
+					<span>@user.UserId</span>
+				</td>
+			</tr>
+		}
+	}
+	</tbody>
+</table>
+</body>
+</html>

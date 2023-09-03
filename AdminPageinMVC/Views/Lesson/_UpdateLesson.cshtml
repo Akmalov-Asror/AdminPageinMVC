@@ -1,0 +1,59 @@
+﻿@model AdminPageinMVC.Dto.LessonDTO
+@{
+    Layout = "~/Views/Shared/_Lesson.cshtml";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Lesson</title>
+    <style>
+        /* Your CSS code here */
+        .update-form {
+            display: flex;
+            flex-direction:column;
+            gap:20px;
+            justify-content:center;
+            align-items:center;
+            margin: 10px;
+        }
+
+        .input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display:flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-confirm{
+            background-color: green; /* Adjust colors as needed */
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px 10px;
+            margin-right: 5px;
+        }
+        .btn-cancel {
+            background-color: red; /* Adjust colors as needed */
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px 10px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<form class="update-form" method="post" action="@Url.Action("UpdateLesson", "Lesson")">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <input type="text" name="title" value="@Model.Title" class="input" />
+    <input type="text" name="videoUrl" value="@Model.VideoUrl" class="input" />
+    <input type="text" name="information" value="@Model.Information" class="input" />
+    <input type="text" name="courseId" value="@Model.Course.Id" class="input" />
+    <button class="btn-confirm" type="submit">Confirm</button>
+    <button class="btn-cancel">Cancel</button>
+</form>
+</body>

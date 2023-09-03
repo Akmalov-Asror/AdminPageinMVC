@@ -1,0 +1,23 @@
+﻿@model AdminPageinMVC.Entity.Education
+@{
+    Layout = "~/Views/Shared/_Education.cshtml";
+}
+<form action="@Url.Action("UpdateEducation", "Education")" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+
+    <div>
+        <input class="input" type="text" id="Name" name="title" placeholder="Title" value="@Model.Title" />
+    </div>
+
+    <div>
+        <input class="input" type="text" id="ImgUrl" name="name" placeholder="End" value="@Model.End" />
+    </div>
+
+    <div>
+        <input class="input" type="text" id="Type" name="description" placeholder="Description" value="@Model.Description" />
+    </div>
+
+    <div>
+        <button type="submit" style="margin-top:20px" class="confirm">Update</button>
+    </div>
+</form>

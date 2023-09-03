@@ -1,0 +1,25 @@
+﻿@model List<AdminPageinMVC.Entity.Result>
+@{
+    Layout = "~/Views/Shared/_Result.cshtml";
+}
+<table class="user-table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>URL</th>
+        <th>Education Title</th>
+        <th>User Full Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var result in Model)
+    {
+        <tr>
+            <td>@result.Id</td>
+            <td>@result.Url</td>
+            <td>@result.Education.Title</td>
+            <td>@result.User.FullName</td>
+        </tr>
+    }
+    </tbody>
+</table>

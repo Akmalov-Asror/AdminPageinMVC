@@ -1,0 +1,9 @@
+﻿<form class="update-form" method="post" action="@Url.Action("AddUser", "User")">
+	<input type="text" name="fullName" class="input" placeholder="FullName"/>
+	<input type="text" name="newEmail" class="input" placeholder="Email"/>
+	<input type="password" name="newPassword" class="input" placeholder="Password"/>
+	<div class="btns">
+		<button class="confirm" type="submit">Confirm</button>
+		<button method="get" asp-controller="User" asp-action="GetUserList" class="cancel">Cancel</button>
+	</div>
+</form>

@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Test.cshtml";
+}
+
+<form method="post" class="update-form" action="@Url.Action("AddTest", "Test")">
+    <div class="update-form">
+        <label for="question">Question:</label>
+        <input type="text" class="input" id="question" name="question" required>
+    </div>
+    <div class="update-form">
+        <label for="options">Options:</label>
+        <input type="text" class="input" id="option1" name="options[0]" required>
+        <input type="text" class="input" id="option2" name="options[1]" required>
+        <input type="text" class="input" id="option3" name="options[2]" required>
+        <input type="text" class="input" id="option4" name="options[3]" required>
+    </div>
+    <div class="update-form">
+        <label for="right">Right Option:</label>
+        <input type="text" class="input" id="right" name="right" required>
+    </div>
+    <button type="submit" class="confirm">Add Test</button>
+</form>

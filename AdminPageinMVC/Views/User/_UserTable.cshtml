@@ -1,0 +1,39 @@
+﻿@model List<AdminPageinMVC.Entity.User>
+
+<table class="user-table">
+	<thead>
+	<tr>
+		<th>Id</th>
+		<th>Full Name</th>
+		<th>Email</th>
+		<th>Actions</th>
+	</tr>
+	</thead>
+	<tbody>
+	@foreach (var user in Model)
+	{
+		<tr>
+			<form action="@Url.Action("UpdateUser", "User")" method="post">
+				<td>
+					<span>@user.Id</span>
+				</td>
+				<td>
+					<span class="view-mode">@user.FullName</span>
+					<input type="text" class="edit-mode hide" name="newFullName" value="@user.FullName" />
+					<input type="hidden" name="id" value="@user.Id" />
+				</td>
+				<td>
+					<span class="view-mode">@user.Email</span>
+					<input type="text" class="edit-mode hide" name="newEmail" value="@user.Email" />
+				</td>
+				<td>
+					<a class="btn-update">Update</a>
+					<button class="btn-confirm hide" asp-controller="User" asp-action="UpdateUser" type="submit">Confirm</button>
+					<button class="btn-delete" asp-controller="User" asp-action="DeleteUser" type="submit">Delete</button>
+					<a class="btn-cancel hide">Cancel</a>
+				</td>
+			</form>
+		</tr>
+	}
+	</tbody>
+</table>

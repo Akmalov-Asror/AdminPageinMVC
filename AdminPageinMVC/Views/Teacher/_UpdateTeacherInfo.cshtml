@@ -1,0 +1,7 @@
+﻿@{
+    Layout = "~/Views/Shared/_Teacher.cshtml";
+}
+<form class="user__result" method="post" action="@Url.Action("GetById", "Teacher")">
+    <input type="text" name="id" placeholder="Teacher id" class="get__inptut" />
+    <button class="confirm" type="submit">Update</button>
+</form>

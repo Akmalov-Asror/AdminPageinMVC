@@ -1,0 +1,21 @@
+﻿@model AdminPageinMVC.Dto.HomeworkDTO
+@{
+    Layout = "~/Views/Shared/_Homework.cshtml";
+}
+<form action="@Url.Action("UpdateHomework", "Homework")" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+
+    <div>
+        <input class="input" type="text" id="Name" name="img" placeholder="Image Url" value="@Model.ImageUrl" />
+    </div>
+
+    <div>
+        <input class="input" type="text" id="description" name="description" placeholder="Description" value="@Model.Description" />
+    </div>
+    <div>
+        <input class="input" type="text" id="taskId" name="taskId" placeholder="Task Id" value="@Model.Task.Id" />
+    </div>
+    <div>
+        <button type="submit" style="margin-top:20px" class="confirm">Update</button>
+    </div>
+</form>

@@ -1,0 +1,86 @@
+﻿@{
+    Layout = "~/Views/Shared/_Course.cshtml";
+}
+@model List<AdminPageinMVC.Entity.Course>
+<head>
+    <style>
+        .card {
+            width: 409px;
+            height: 380px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .card section img {
+                position: absolute;
+                bottom: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                filter: brightness(50%);
+                left: 0;
+                right: 0;
+            }
+
+            .card .cardBody {
+                position: absolute;
+                bottom: 5px;
+                left: 5px;
+                width: 500px;
+                height: 120px;
+                border-radius: 20px;
+                padding: 0 0 0 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+        .cardBody div:first-child {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px 0 0;
+        }
+
+        .cardBody div .bi-person-circle {
+            font-size: 35px !important;
+            color: aquamarine;
+        }
+
+        .cardBody div h4 {
+            color: white;
+            font-size: 21px;
+            margin: 0;
+            line-height: 40px;
+        }
+
+        .cardBody div p {
+            color: white;
+            font-size: 17px;
+            width: 400px;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<div style="display:flex; justify-content:space-between; width: 1005px; flex-wrap: wrap; gap: 20px">
+    @foreach (var course in Model)
+    {
+        <div class="card">
+            <section>
+                <img src=@course.ImageUrl alt="teacher">
+            </section>
+            <div class="cardBody">
+                <div>
+                    <i class="bi bi-person-circle"></i>
+                </div>
+                <div>
+                    <p>@course.Id</p>
+                    <h4>@course.Description</h4>
+                    <p>@course.Price</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

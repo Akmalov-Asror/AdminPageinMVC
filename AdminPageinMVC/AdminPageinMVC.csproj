@@ -1,0 +1,105 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Teacher\_UpdateTeacher.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Teacher\_AddTeacher.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Contact\_ContactPage.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Course\_AddCourse.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Course\_ByIdCourse.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Course\_UpdateCourseInfo.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Education\_UpdateEducationInfo.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Homework\_AddHomework.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Homework\_ByIdHomework.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Homework\_HomeworkPage.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Result\UpdateResult.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Task\_AddTask.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Task\_ByIdTask.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Teacher\_AddTeacher.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Test\_AddTest.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Test\_TestPage.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Teacher\_UpdateTeacher.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Course\_AddCourse.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Course\_UpdateCourseInfo.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Course\_ByIdCourse.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Education\_UpdateEducationInfo.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Homework\_HomeworkPage.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Homework\_AddHomework.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Homework\_ByIdHomework.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Task\_AddTask.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Task\_ByIdTask.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Test\_TestPage.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Test\_AddTest.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Contact\_ContactPage.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Result\UpdateResult.cshtml" />
+  </ItemGroup>
+
+</Project>

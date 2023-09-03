@@ -1,0 +1,31 @@
+﻿@model List<AdminPageinMVC.Entity.Contact>
+@{
+    Layout = "~/Views/Shared/_Contact.cshtml";
+}
+
+<table class="user-table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>PhoneNumber</th>
+        <th>Time</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var contact in Model)
+    {
+        <tr>
+            <td>@contact.Id</td>
+            <td>@contact.Name</td>
+            <td>@contact.PhoneNumber</td>
+            <td>@contact.DateTime</td>
+            <td>
+                <button class="btn-delete" asp-controller="Contact" asp-action="DeleteContact" type="submit">Delete</button>
+                <a class="btn-cancel hide">Cancel</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,47 @@
+﻿@model AdminPageinMVC.Entity.Result
+@{
+    Layout = "~/Views/Shared/_Result.cshtml";
+}
+<head>
+    <style>
+        option {
+            background: #1f1f1f;
+            color: white;
+        }
+    </style>
+</head>
+
+<form method="post" asp-action="UpdateResult" asp-controller="Result">
+    <div class="update-form">
+        <input type="hidden" name="id" value="@Model.Id" /> 
+        <label for="educationId">Education:</label>
+        <select class="form-control" id="educationId" name="educationId" required style="background:none; color:white; padding:5px; margin-left:5px; margin-bottom:10px">
+            <option value="@Model.Education.Id">@Model.Education.Title</option>
+            @foreach (var education in ViewBag.EducationList)
+            {
+                if (education.Title != Model.Education.Title)
+                {
+                    <option value="@education.Id">@education.Title</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="update-form">
+        <label for="userId">User:</label>
+        <select class="form-control" id="userId" name="userId" required style="background:none; color:white; padding:5px; margin-left:5px; margin-bottom:10px">
+            <option value="@Model.User.Id">@Model.User.FullName</option>
+            @foreach (var user in ViewBag.UserList)
+            {
+                if (user.FullName != Model.User.FullName)
+                {
+                    <option value="@user.Id">@user.FullName</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="update-form">
+        <label for="url">URL:</label>
+        <input type="text" class="input" id="url" name="url" value="@Model.Url" required>
+    </div>
+    <button type="submit" class="confirm">Update Result</button>
+</form>

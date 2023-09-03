@@ -1,0 +1,55 @@
+﻿@model List<AdminPageinMVC.Dto.EducationDTO>
+@{
+    Layout = "~/Views/Shared/_Education.cshtml";
+}
+<table class="user-table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>End</th>
+        <th>Description</th>
+        <th>Course Id</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var education in Model)
+    {
+        <tr>
+            <form action="@Url.Action("UpdateEducation", "Education")" method="post">
+                <td>
+                    <span>@education.Id</span>
+                </td>
+                <td>
+                    <span class="view-mode">@education.Title</span>
+                    <input type="text" class="edit-mode hide" name="title" value="@education.Title" />
+                    <input type="hidden" name="id" value="@education.Id" />
+                </td>
+                <td>
+                    <span class="view-mode">@education.End</span>
+                    <input type="text" class="edit-mode hide" name="end" value="@education.End" />
+                </td>
+                <td>
+                    <span class="view-mode">@education.Description</span>
+                    <input type="text" class="edit-mode hide" name="description" value="@education.Description" />
+                </td>
+                <td>
+                    <span class="view-mode">@education.Course.Id</span>
+                    <input type="text" class="edit-mode hide" name="courseId" value="@education.Course.Id" />
+                </td>
+                <td>
+                    <a class="btn-update">Update</a>
+                    <button class="btn-confirm hide" asp-controller="Education" asp-action="UpdateEducation" type="submit">Confirm</button>
+                    <button class="btn-delete" asp-controller="Education" asp-action="DeleteCourse" type="submit">Delete</button>
+                    <a class="btn-cancel hide">Cancel</a>
+                </td>
+            </form>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div class="center-align">
+    <a class="waves-effect waves-light btn" href="@Url.Action("AddEducation", "Education")">Create New Education</a>
+</div>
