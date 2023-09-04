@@ -31,7 +31,7 @@ public class LessonController : Controller
       {
           if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(videoUrl) || string.IsNullOrWhiteSpace(information))
           {
-              ModelState.AddModelError("", "Barcha maydonlar to'ldirilishi shart.");
+              ModelState.AddModelError("", "All fields must be filled");
               return View("_LessonPage");
           }
           var lesson = new LessonDTO();

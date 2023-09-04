@@ -27,6 +27,7 @@ public class ContactController : Controller
     [HttpPost]
     public async Task<IActionResult> AddContact(string name, string phoneNumber)
     {
+        if (!ModelState.IsValid) return View("_ContactPage");
         var addContact = new Contact()
         {
             Name = name,

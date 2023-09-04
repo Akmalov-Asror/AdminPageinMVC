@@ -2,9 +2,9 @@
     Layout = "~/Views/Shared/_Task.cshtml";
 }
 <form class="update-form" method="post" action="@Url.Action("AddTask", "Task")">
-    <input type="text" name="title" class="input" placeholder="Title" />
-    <input type="text" name="description" class="input" placeholder="Description" />
-    <input type="text" name="lessonId" class="input" placeholder="Lesson Id" />
+    <input type="text" name="title" class="input" placeholder="Title" required />
+    <input type="text" name="description" class="input" placeholder="Description" required />
+    <input type="text" name="lessonId" class="input" placeholder="Lesson Id" required />
     <div class="btns">
         <button class="confirm" type="submit">Confirm</button>
         <button method="get" asp-controller="Task" asp-action="GetAllTask" class="cancel">Cancel</button>

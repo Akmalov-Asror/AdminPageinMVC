@@ -20,7 +20,8 @@ namespace AdminPageinMVC.Controllers
 
 		public async Task<IActionResult> DeleteUser(int id)
 		{
-			await UserRepository.DeleteUserAsync(id);
+            if (!ModelState.IsValid) return View("_UserTable");
+            await UserRepository.DeleteUserAsync(id);
 			var allUsersAsync = await UserRepository.GetAllUsersAsync();
 			return View("_UserTable");
 		}
@@ -44,7 +45,8 @@ namespace AdminPageinMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> AddUser(string fullName, string newEmail, string newPassword)
         {
-	        User newUser = new User();
+            if (!ModelState.IsValid) return View("_UserTable");
+            User newUser = new User();
 			newUser.FullName = fullName;
 			newUser.Email = newEmail;
 			newUser.Password = newPassword;
@@ -62,7 +64,8 @@ namespace AdminPageinMVC.Controllers
 		[HttpPost]
         public async Task<IActionResult> GetUserCourses(int id)
         {
-	        var userCourses = await UserRepository.GetUserCourses(id);
+            if (!ModelState.IsValid) return View("_UserTable");
+            var userCourses = await UserRepository.GetUserCourses(id);
 
 			return View("_UserCourseTable", userCourses);
         }
@@ -74,14 +77,16 @@ namespace AdminPageinMVC.Controllers
 		[HttpPost]
         public async Task<IActionResult> GetUserFeedbacks(int id)
         {
-	        var userFeedbacks = await _feedbackRepository.GetUserFeedbacks(id);
+            if (!ModelState.IsValid) return View("_UserTable");
+            var userFeedbacks = await _feedbackRepository.GetUserFeedbacks(id);
 
 	        return View("_UserFeedbackTable", userFeedbacks);
         }
         [HttpPost]
         public async Task<IActionResult> GetUserResults(int id)
         {
-	        var userResults = await _resultRepository.GetUserResult(id);
+            if (!ModelState.IsValid) return View("_UserTable");
+            var userResults = await _resultRepository.GetUserResult(id);
 
 	        return View("_UserResultTable", userResults);
         }

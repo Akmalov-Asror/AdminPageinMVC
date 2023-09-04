@@ -51,6 +51,7 @@ public class TaskController : Controller
     }
     public async Task<IActionResult> GetByIdTask(int id)
     {
+        if (!ModelState.IsValid) return View("_TaskPage");
         var taskByIdAsync = await _taskRepository.GetTaskByIdAsync(id);
         return View("_ByIdTask", taskByIdAsync);
     }

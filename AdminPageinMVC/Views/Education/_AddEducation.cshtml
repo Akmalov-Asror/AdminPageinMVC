@@ -2,10 +2,10 @@
     Layout = "~/Views/Shared/_Education.cshtml";
 }
 <form class="update-form" method="post" action="@Url.Action("AddEducation", "Education")">
-    <input type="text" name="title" class="input" placeholder="Title" />
-    <input type="text" name="end" class="input" placeholder="End" />
-    <input type="text" name="description" class="input" placeholder="Description" />
-    <input type="text" name="courseId" class="input" placeholder="Course Id" />
+    <input type="text" name="title" class="input" placeholder="Title" required />
+    <input type="text" name="end" class="input" placeholder="End" required />
+    <input type="text" name="description" class="input" placeholder="Description" required />
+    <input type="text" name="courseId" class="input" placeholder="Course Id" required />
     <div class="btns">
         <button class="confirm" type="submit">Confirm</button>
         <button method="get" asp-controller="Lesson" asp-action="GetAllLesson" class="cancel">Cancel</button>

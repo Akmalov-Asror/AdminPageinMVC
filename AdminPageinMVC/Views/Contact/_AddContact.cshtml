@@ -3,10 +3,11 @@
 }
 
 <form class="update-form" method="post" action="@Url.Action("AddContact", "Contact")">
-    <input type="text" name="name" class="input" placeholder="Name" />
-    <input type="text" name="phoneNumber" class="input" placeholder="PhoneNumber" />
-    <div class="btns">
-        <button class="confirm" type="submit">Confirm</button>
-        <button method="get" asp-controller="Contact" asp-action="GetContacts" class="cancel">Cancel</button>
-    </div>
+
+        <input type="text" name="name" class="input" placeholder="Name" />
+        <input type="text" name="phoneNumber" class="input" placeholder="PhoneNumber" />
+        <div class="btns">
+            <button class="confirm" type="submit">Confirm</button>
+            <button method="get" asp-controller="Contact" asp-action="GetContacts" class="cancel">Cancel</button>
+        </div>
 </form>

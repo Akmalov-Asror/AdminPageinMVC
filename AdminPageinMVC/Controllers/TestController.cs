@@ -24,6 +24,7 @@ public class TestController : Controller
     [HttpPost]
     public async Task<IActionResult> AddTest(string question, List<string> options, string right)
     {
+        if (!ModelState.IsValid) return View("_TestPage");
         Test test = new Test();
         test.Question = question;
         test.Options = options;
@@ -40,6 +41,7 @@ public class TestController : Controller
     [HttpPost]
     public async Task<IActionResult> UpdateTest(int id, string question, List<string> options, string right)
     {
+        if (!ModelState.IsValid) return View("_TestPage");
         var test = new Test();
         test.Question = question;
         test.Options = options;

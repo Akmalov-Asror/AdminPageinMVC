@@ -35,6 +35,7 @@ public class ResultController : Controller
     [HttpPost]
     public async Task<IActionResult> AddResult(string url, int educationId, int userId)
     {
+        if (!ModelState.IsValid) return View("ResultTable");
         Result result = new Result();
         result.Url = url;
         result.User = await _userRepository.GetUserByIdAsync(userId);
@@ -47,6 +48,7 @@ public class ResultController : Controller
     [HttpPost]
     public async Task<IActionResult> UpdateResult(int id, string url, int educationId, int userId)
     {
+        if (!ModelState.IsValid) return View("ResultTable");
         var result = await _resultRepository.GetResultByIdAsync(id);
         result.Url = url;
         result.Education = await _educationRepository.GetEducationByIdAsync(educationId);
@@ -63,6 +65,7 @@ public class ResultController : Controller
     [HttpPost]
     public async Task<IActionResult> GetResultById(int id)
     {
+        if (!ModelState.IsValid) return View("ResultTable");
         var resultByIdAsync = await _resultRepository.GetResultByIdAsync(id);
         ViewBag.EducationList = await _educationRepository.GetAllEducationAsync();
         ViewBag.UserList = await _userRepository.GetAllUsersAsync();
@@ -76,6 +79,7 @@ public class ResultController : Controller
     [HttpPost]
     public async Task<IActionResult> DeleteResult(int id)
     {
+        if (!ModelState.IsValid) return View("ResultTable");
         await _resultRepository.DeleteResultAsync(id);
         var all = await _resultRepository.GetAllResultAsync();
         return View("ResultTable", all);

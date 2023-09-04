@@ -27,6 +27,7 @@ public class CourseController : Controller
     [HttpPost]
     public async Task<IActionResult> AddCourse(string price, string description, string imgUrl)
     {
+        if (!ModelState.IsValid) return View("_CourseCard");
         var course = new Course();
         course.Price = Convert.ToDouble(price);
         course.Description = description;
@@ -50,6 +51,7 @@ public class CourseController : Controller
     [HttpPost]
     public async Task<IActionResult> UpdateCourse(int id, double price, string description, string imgUrl)
     {
+        if (!ModelState.IsValid) return View("_CourseCard");
         var teacher = new CourseDTO();
         teacher.Price = price;
         teacher.Description = description;

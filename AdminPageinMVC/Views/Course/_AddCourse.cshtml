@@ -3,9 +3,9 @@
 }
 
 <form class="update-form" method="post" action="@Url.Action("AddCourse", "Course")">
-    <input type="text" name="price" class="input" placeholder="Price" />
-    <input type="text" name="description" class="input" placeholder="Description" />
-    <input type="text" name="imgUrl" class="input" placeholder="ImgUrl" />
+    <input type="text" name="price" class="input" placeholder="Price" required />
+    <input type="text" name="description" class="input" placeholder="Description" required />
+    <input type="text" name="imgUrl" class="input" placeholder="ImgUrl" required />
     <div class="btns">
         <button class="confirm" type="submit">Confirm</button>
         <button method="get" asp-controller="Teacher" asp-action="GetTeacherList" class="cancel">Cancel</button>

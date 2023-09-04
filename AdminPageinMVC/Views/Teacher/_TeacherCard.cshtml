@@ -67,23 +67,31 @@
         }
 	</style>
 </head>
-<div style="display:flex; justify-content:space-between; width: 1005px; flex-wrap: wrap; gap: 20px">
-	@foreach (var teacher in Model)
-	{
-		<div class="card">
-			<section>
-				<img src=@teacher.ImageUrl alt="teacher">
-			</section>
-			<div class="cardBody">
-				<div>
-					<i class="bi bi-person-circle"></i>
-				</div>
-				<div>
-					<p>@teacher.Id</p>
-					<h4>@teacher.Name</h4>
-					<p>@teacher.Type</p>
-				</div>
-			</div>
-		</div>
-	}
-</div>
+@if (Model != null && Model.Count > 0)
+{
+    <div style="display:flex; justify-content:space-between; width: 1005px; flex-wrap: wrap; gap: 20px">
+        @foreach (var teacher in Model)
+        {
+            <div class="card">
+                <section>
+                    <img src=@teacher.ImageUrl alt="teacher">
+                </section>
+                <div class="cardBody">
+                    <div>
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                    <div>
+                        <p>@teacher.Id</p>
+                        <h4>@teacher.Name</h4>
+                        <p>@teacher.Type</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>The model is empty or incomplete.</p>
+    <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
+}

@@ -23,7 +23,8 @@ public class TeacherController : Controller
     [HttpPost]
 	public async Task<IActionResult> AddTeacher(string name, string type , string imgUrl)
 	{
-		var teacher = new Teacher();
+        if (!ModelState.IsValid) return View("_TeacherCard");
+        var teacher = new Teacher();
 		teacher.Name = name;
 		teacher.Type = type;
 		teacher.ImageUrl = imgUrl;
@@ -40,6 +41,7 @@ public class TeacherController : Controller
 
     public async Task<IActionResult> GetById(int id)
     {
+        if (!ModelState.IsValid) return View("_TeacherCard");
         var teacherByIdAsync = await _teacherRepository.GetTeacherByIdAsync(id);
         return View("_ById", teacherByIdAsync);
     }
@@ -47,8 +49,8 @@ public class TeacherController : Controller
     [HttpPost]
     public async Task<IActionResult> UpdateTeacher(int id,string name, string type, string image)
     {
-
-		var teacher = new TeacherDto();
+        if (!ModelState.IsValid) return View("_TeacherCard");
+        var teacher = new TeacherDto();
         teacher.Name = name;
 		teacher.Type = type;
 		teacher.ImageUrl = image;
@@ -60,6 +62,7 @@ public class TeacherController : Controller
     [HttpPost]
     public async Task<IActionResult> DeleteTeacher(int id)
     {
+        if (!ModelState.IsValid) return View("_Teacher");
         await _teacherRepository.DeleteTeacherAsync(id);
         var allListTeachers = await _teacherRepository.GetAllTeacherAsync();
         return View("_TeacherCard", allListTeachers);
