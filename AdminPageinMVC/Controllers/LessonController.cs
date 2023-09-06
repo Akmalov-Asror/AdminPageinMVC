@@ -1,6 +1,7 @@
 ﻿using AdminPageinMVC.Data;
 using AdminPageinMVC.Dto;
 using AdminPageinMVC.Entity;
+using AdminPageinMVC.OnlyModelViews;
 using AdminPageinMVC.Repository;
 using AdminPageinMVC.Repository.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -27,18 +28,18 @@ public class LessonController : Controller
     public async Task<IActionResult> AddLesson() => View("_AddLesson");
 
       [HttpPost]
-      public async Task<IActionResult> AddLesson(int id,string title, string videoUrl, string information, int courseId)
+      public async Task<IActionResult> AddLesson(AddLessonDto addLessonDto)
       {
-          if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(videoUrl) || string.IsNullOrWhiteSpace(information))
+          if (string.IsNullOrWhiteSpace(addLessonDto.Title) || string.IsNullOrWhiteSpace(addLessonDto.VideoUrl) || string.IsNullOrWhiteSpace(addLessonDto.Information))
           {
               ModelState.AddModelError("", "All fields must be filled");
               return View("_LessonPage");
           }
           var lesson = new LessonDTO();
-          lesson.Title = title;
-          lesson.VideoUrl = videoUrl;
-          lesson.Information = information;
-            var findCourse = await _context.Course.FirstOrDefaultAsync(c => c.Id == courseId);
+          lesson.Title = addLessonDto.Title;
+          lesson.VideoUrl = addLessonDto.VideoUrl;
+          lesson.Information = addLessonDto.Information;
+            var findCourse = await _context.Course.FirstOrDefaultAsync(c => c.Id == addLessonDto.CourseId);
         if (findCourse != null) lesson.Course = findCourse;
         await _lessonRepository.AddLessonAsync(lesson);
         var getLessonList = await _lessonRepository.GetAllLessonAsync();
@@ -53,14 +54,14 @@ public class LessonController : Controller
           return View("_ByIdLesson", teacherByIdAsync);
       }
     [HttpPost]
-    public async Task<IActionResult> UpdateLesson(int id, string title, string videoUrl, string information, int courseId)
+    public async Task<IActionResult> UpdateLesson(int id, AddLessonDto addLessonDto)
       {
           if (!ModelState.IsValid) return View("_LessonPage");
           var lesson = new LessonDTO();
-          lesson.Title = title;
-          lesson.VideoUrl = videoUrl;
-          lesson.Information = information;
-          var findCourse = await _context.Course.FirstOrDefaultAsync(c => c.Id == courseId);
+        lesson.Title = addLessonDto.Title;
+        lesson.VideoUrl = addLessonDto.VideoUrl;
+        lesson.Information = addLessonDto.Information;
+        var findCourse = await _context.Course.FirstOrDefaultAsync(c => c.Id == addLessonDto.CourseId);
           if (findCourse != null)
           {
               lesson.Course = findCourse;

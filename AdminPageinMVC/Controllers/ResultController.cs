@@ -1,4 +1,5 @@
 ﻿using AdminPageinMVC.Entity;
+using AdminPageinMVC.OnlyModelViews;
 using AdminPageinMVC.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -33,34 +34,31 @@ public class ResultController : Controller
         return View("AddResult");
     }
     [HttpPost]
-    public async Task<IActionResult> AddResult(string url, int educationId, int userId)
+    public async Task<IActionResult> AddResult(AddResultDto addResultDto)
     {
         if (!ModelState.IsValid) return View("ResultTable");
         Result result = new Result();
-        result.Url = url;
-        result.User = await _userRepository.GetUserByIdAsync(userId);
-        result.Education = await _educationRepository.GetEducationByIdAsync(educationId);
+        result.Url = addResultDto.Url;
+        result.User = await _userRepository.GetUserByIdAsync(addResultDto.UserId);
+        result.Education = await _educationRepository.GetEducationByIdAsync(addResultDto.EducationId);
         await _resultRepository.AddResultAsync(result);
         var allResultAsync = await _resultRepository.GetAllResultAsync();
         return View("ResultTable", allResultAsync);
     }
 
     [HttpPost]
-    public async Task<IActionResult> UpdateResult(int id, string url, int educationId, int userId)
+    public async Task<IActionResult> UpdateResult(int id, AddResultDto addResultDto)
     {
         if (!ModelState.IsValid) return View("ResultTable");
         var result = await _resultRepository.GetResultByIdAsync(id);
-        result.Url = url;
-        result.Education = await _educationRepository.GetEducationByIdAsync(educationId);
-        result.User = await _userRepository.GetUserByIdAsync(userId);
+        result.Url = addResultDto.Url;
+        result.Education = await _educationRepository.GetEducationByIdAsync(addResultDto.EducationId);
+        result.User = await _userRepository.GetUserByIdAsync(addResultDto.UserId);
         await _resultRepository.UpdateResultAsync(result);
         var all = await _resultRepository.GetAllResultAsync();
         return View("ResultTable", all);
     }
-    public async Task<IActionResult> UpdateResult()
-    {
-        return View("GetById");
-    }
+    public async Task<IActionResult> UpdateResult() => View("GetById");
 
     [HttpPost]
     public async Task<IActionResult> GetResultById(int id)
@@ -72,10 +70,8 @@ public class ResultController : Controller
         return View("UpdateResult", resultByIdAsync);
     }
 
-    public async Task<IActionResult> DeleteResult()
-    {
-        return View("DeleteResult");
-    }
+    public async Task<IActionResult> DeleteResult() => View("DeleteResult");
+
     [HttpPost]
     public async Task<IActionResult> DeleteResult(int id)
     {

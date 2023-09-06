@@ -1,5 +1,6 @@
 ﻿using AdminPageinMVC.Dto;
 using AdminPageinMVC.Entity;
+using AdminPageinMVC.OnlyModelViews;
 using AdminPageinMVC.Repository;
 using AdminPageinMVC.Repository.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -22,13 +23,13 @@ public class TestController : Controller
     public async Task<IActionResult> AddTest() => View("_AddTest");
 
     [HttpPost]
-    public async Task<IActionResult> AddTest(string question, List<string> options, string right)
+    public async Task<IActionResult> AddTest(AddTestDto addTeacherDto)
     {
         if (!ModelState.IsValid) return View("_TestPage");
         Test test = new Test();
-        test.Question = question;
-        test.Options = options;
-        test.RightOption = right;
+        test.Question = addTeacherDto.Question;
+        test.Options = addTeacherDto.Options;
+        test.RightOption = addTeacherDto.RightOption;
         await _testRepository.AddTestAsync(test);
         var allTests = await _testRepository.GetAll();
         return View("_TestPage", allTests);
@@ -39,13 +40,13 @@ public class TestController : Controller
         return View("_ByIdTest", testByIdAsync);
     }
     [HttpPost]
-    public async Task<IActionResult> UpdateTest(int id, string question, List<string> options, string right)
+    public async Task<IActionResult> UpdateTest(int id, AddTestDto addTeacherDto)
     {
         if (!ModelState.IsValid) return View("_TestPage");
         var test = new Test();
-        test.Question = question;
-        test.Options = options;
-        test.RightOption = right;
+        test.Question = addTeacherDto.Question;
+        test.Options = addTeacherDto.Options;
+        test.RightOption = addTeacherDto.RightOption;
         await _testRepository.UpdateTest(test);
         var tests = await _testRepository.GetAll();
         return View("_TestPage", tests);

@@ -1,5 +1,6 @@
 ﻿using AdminPageinMVC.Data;
 using AdminPageinMVC.Dto;
+using AdminPageinMVC.OnlyModelViews;
 using AdminPageinMVC.Repository;
 using AdminPageinMVC.Repository.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -27,14 +28,14 @@ public class EducationController : Controller
     public async Task<IActionResult> AddEducation() => View("_AddEducation");   
 
     [HttpPost]
-    public async Task<ActionResult> AddEducation(string title, string end, string description, int courseId)
+    public async Task<ActionResult> AddEducation(AddEducationDto educationDto)
     {
         if (!ModelState.IsValid) return View("_EducationPage");
         var edu = new EducationDTO();
-        edu.Title = title;
-        edu.End = end;
-        edu.Description = description;
-        var findCourse = await _context.Course.FirstOrDefaultAsync(c => c.Id == courseId);
+        edu.Title = educationDto.Title;
+        edu.End = educationDto.End;
+        edu.Description = educationDto.Description;
+        var findCourse = await _context.Course.FirstOrDefaultAsync(c => c.Id == educationDto.CourseId);
         if (findCourse != null)
         {
             edu.Course = findCourse;
@@ -51,14 +52,14 @@ public class EducationController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> UpdateEducation(int id, string title, string description, string end, int courseId)
+    public async Task<IActionResult> UpdateEducation(int id, AddEducationDto educationDto)
     {
         if (!ModelState.IsValid) return View("_EducationPage");
         var education = new EducationDTO();
-        education.Title = title;
-        education.Description = description;
-        education.End = end;
-        var findCourse = await _context.Course.FirstOrDefaultAsync(c => c.Id == courseId);
+        education.Title = educationDto.Title;
+        education.End = educationDto.End;
+        education.Description = educationDto.Description;
+        var findCourse = await _context.Course.FirstOrDefaultAsync(c => c.Id == educationDto.CourseId);
         if (findCourse != null)
         {
             education.Course = findCourse;

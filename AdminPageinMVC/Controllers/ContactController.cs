@@ -1,4 +1,5 @@
 ﻿using AdminPageinMVC.Entity;
+using AdminPageinMVC.OnlyModelViews;
 using AdminPageinMVC.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,13 +26,13 @@ public class ContactController : Controller
     public async Task<IActionResult> AddContact() => View("_AddContact");
     
     [HttpPost]
-    public async Task<IActionResult> AddContact(string name, string phoneNumber)
+    public async Task<IActionResult> AddContact(ContactDto contactDto)
     {
         if (!ModelState.IsValid) return View("_ContactPage");
         var addContact = new Contact()
         {
-            Name = name,
-            PhoneNumber = phoneNumber,
+            Name = contactDto.name,
+            PhoneNumber = contactDto.phoneNumber,
             DateTime = DateTimeOffset.UtcNow
         };
         await _contactRepository.AddContact(addContact);

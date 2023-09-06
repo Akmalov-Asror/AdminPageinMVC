@@ -1,5 +1,7 @@
 ﻿using AdminPageinMVC.Data;
 using AdminPageinMVC.Dto;
+using AdminPageinMVC.Entity;
+using AdminPageinMVC.OnlyModelViews;
 using AdminPageinMVC.Repository;
 using AdminPageinMVC.Repository.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -28,13 +30,13 @@ public class HomeworkController : Controller
     public async Task<IActionResult> AddHomework() => View("_AddHomework");
 
     [HttpPost]
-    public async Task<ActionResult> AddHomework(string img, string description, int taskId)
+    public async Task<ActionResult> AddHomework(AddHomeworkDto addHomeworkDto)
     {
         if (!ModelState.IsValid) return View("_HomeworkPage");
         var homework = new HomeworkDTO();
-        homework.ImageUrl = img;
-        homework.Description = description;
-        var findTask = await _context.Task.FirstOrDefaultAsync(c => c.Id == taskId);
+        homework.ImageUrl = addHomeworkDto.ImageUrl;
+        homework.Description = addHomeworkDto.Description;
+        var findTask = await _context.Task.FirstOrDefaultAsync(c => c.Id == addHomeworkDto.TaskId);
         if (findTask != null) homework.Task = findTask;
         await _homeworkRepository.AddHomeworkAsync(homework);
         var allListHomework = await _homeworkRepository.GetAllHomeworkAsync();
@@ -47,13 +49,13 @@ public class HomeworkController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> UpdateHomework(int id, string img, string description, int taskId)
+    public async Task<IActionResult> UpdateHomework(int id, AddHomeworkDto addHomeworkDto)
     {
         if (!ModelState.IsValid) return View("_HomeworkPage");
         var homeworkDto = new HomeworkDTO();
-        homeworkDto.ImageUrl = img;
-        homeworkDto.Description = description;
-        var findTask = await _context.Task.FirstOrDefaultAsync(c => c.Id == taskId);
+        homeworkDto.ImageUrl = addHomeworkDto.ImageUrl;
+        homeworkDto.Description = addHomeworkDto.Description;
+        var findTask = await _context.Task.FirstOrDefaultAsync(c => c.Id == addHomeworkDto.TaskId);
         if (findTask != null) homeworkDto.Task = findTask;
         await _homeworkRepository.UpdateHomeworkAsync(id, homeworkDto);
         var allListHomework = await _homeworkRepository.GetAllHomeworkAsync();

@@ -5,6 +5,7 @@ using AdminPageinMVC.Repository.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Xml.Linq;
+using AdminPageinMVC.OnlyModelViews;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace AdminPageinMVC.Controllers;
@@ -25,22 +26,21 @@ public class CourseController : Controller
     public async Task<IActionResult> AddCourse() => View("_AddCourse");
 
     [HttpPost]
-    public async Task<IActionResult> AddCourse(string price, string description, string imgUrl)
+    public async Task<IActionResult> AddCourse(AddCourseDto addCourseDto)
     {
         if (!ModelState.IsValid) return View("_CourseCard");
-        var course = new Course();
-        course.Price = Convert.ToDouble(price);
-        course.Description = description;
-        course.ImageUrl = imgUrl;
+        var course = new Course
+        {
+            Price = Convert.ToDouble(addCourseDto.Price),
+            Description = addCourseDto.Description,
+            ImageUrl = addCourseDto.ImageUrl
+        };
         await _courseRepository.AddCourseAsync(course);
         var allListCourses = await _courseRepository.GetAllCourseAsync();
         return View("_CourseCard", allListCourses);
     }
 
-    public async Task<IActionResult> UpdateCourse()
-    {
-        return View("_UpdateCourseInfo");
-    }
+    public async Task<IActionResult> UpdateCourse() => View("_UpdateCourseInfo");
 
     public async Task<IActionResult> GetByIdCourse(int id)
     {
@@ -49,13 +49,13 @@ public class CourseController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> UpdateCourse(int id, double price, string description, string imgUrl)
+    public async Task<IActionResult> UpdateCourse(int id , AddCourseDto addCourseDto)
     {
         if (!ModelState.IsValid) return View("_CourseCard");
         var teacher = new CourseDTO();
-        teacher.Price = price;
-        teacher.Description = description;
-        teacher.ImageUrl = imgUrl;
+        teacher.Price = addCourseDto.Price;
+        teacher.Description = addCourseDto.Description;
+        teacher.ImageUrl = addCourseDto.ImageUrl;
         await _courseRepository.UpdateCourseAsync(id, teacher);
         var allListTeachers = await _courseRepository.GetAllCourseAsync();
         return View("_CourseCard", allListTeachers);

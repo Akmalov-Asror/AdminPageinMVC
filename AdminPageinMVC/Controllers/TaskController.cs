@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using AdminPageinMVC.OnlyModelViews;
 
 namespace AdminPageinMVC.Controllers;
 
@@ -29,7 +30,7 @@ public class TaskController : Controller
     public async Task<IActionResult> AddTask() => View("_AddTask");
 
     [HttpPost]
-    public async Task<ActionResult> AddTask(string description, int lessonId, string title)
+    public async Task<ActionResult> AddTask(AddTaskDto lessonDto)
     {
         if (!ModelState.IsValid) return View("_TaskPage");
 
@@ -37,11 +38,11 @@ public class TaskController : Controller
         {
             Process = EProcess.PR0GRESS,
             DateTime = DateTimeOffset.UtcNow,
-            Title = title,
-            Description = description
+            Title = lessonDto.Title,
+            Description = lessonDto.Description,
         };
 
-        var findLesson = await _context.Lesson.FirstOrDefaultAsync(c => c.Id == lessonId);
+        var findLesson = await _context.Lesson.FirstOrDefaultAsync(c => c.Id == lessonDto.LessonId);
         if (findLesson != null) task.Lesson = findLesson;
 
         await _taskRepository.AddTaskAsync(task);
@@ -57,15 +58,15 @@ public class TaskController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> UpdateTask(int id, string description,string title,int lessonId)
+    public async Task<IActionResult> UpdateTask(int id, AddTaskDto lessonDto)
     {
         if (!ModelState.IsValid) return View("_TaskPage");
         var task = new TaskDTO();
         task.Process = EProcess.PR0GRESS;
         task.DateTime = DateTimeOffset.UtcNow;
-        task.Title = title;
-        task.Description = description;
-        var findLesson = await _context.Lesson.FirstOrDefaultAsync(c => c.Id == lessonId);
+        task.Title = lessonDto.Title;
+        task.Description = lessonDto.Description;
+        var findLesson = await _context.Lesson.FirstOrDefaultAsync(c => c.Id == lessonDto.LessonId);
         if (findLesson != null) task.Lesson = findLesson;
         await _taskRepository.UpdateTaskAsync(id, task);
         var allListTask = await _taskRepository.GetAllTaskAsync();

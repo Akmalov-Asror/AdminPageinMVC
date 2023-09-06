@@ -1,5 +1,6 @@
 ﻿using AdminPageinMVC.Dto;
 using AdminPageinMVC.Entity;
+using AdminPageinMVC.OnlyModelViews;
 using AdminPageinMVC.Repository;
 using AdminPageinMVC.Repository.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -21,13 +22,13 @@ public class TeacherController : Controller
 	public async Task<IActionResult> AddTeacher() => View("_AddTeacher");
 
     [HttpPost]
-	public async Task<IActionResult> AddTeacher(string name, string type , string imgUrl)
+	public async Task<IActionResult> AddTeacher(AddTeacherDto addTeacherDto)
 	{
         if (!ModelState.IsValid) return View("_TeacherCard");
         var teacher = new Teacher();
-		teacher.Name = name;
-		teacher.Type = type;
-		teacher.ImageUrl = imgUrl;
+		teacher.Name = addTeacherDto.Name;
+		teacher.Type = addTeacherDto.Type;
+		teacher.ImageUrl = addTeacherDto.ImageUrl;
 		await _teacherRepository.AddTeacherAsync(teacher);
 		var allListTeachers = await _teacherRepository.GetAllTeacherAsync();
 		return View("_TeacherCard", allListTeachers);
@@ -47,13 +48,13 @@ public class TeacherController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> UpdateTeacher(int id,string name, string type, string image)
+    public async Task<IActionResult> UpdateTeacher(int id, AddTeacherDto addTeacherDto)
     {
         if (!ModelState.IsValid) return View("_TeacherCard");
         var teacher = new TeacherDto();
-        teacher.Name = name;
-		teacher.Type = type;
-		teacher.ImageUrl = image;
+        teacher.Name = addTeacherDto.Name;
+		teacher.Type = addTeacherDto.Type;
+		teacher.ImageUrl = addTeacherDto.ImageUrl;
         await _teacherRepository.UpdateTeacherAsync(id, teacher);
         var allListTeachers = await _teacherRepository.GetAllTeacherAsync();
         return View("_TeacherCard", allListTeachers);
