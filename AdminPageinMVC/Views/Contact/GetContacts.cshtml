@@ -1,0 +1,36 @@
+﻿@model List<AdminPageinMVC.Entity.Contact>
+@using NonFactors.Mvc.Grid
+@{
+    Layout = "~/Views/Shared/_Contact.cshtml";
+}
+
+@if (Model == null || Model.Count == 0)
+{
+    <p>Hamma ma'lumotlar kiritilmagan</p>
+    <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
+}
+else
+{
+
+    <div class="user-table">
+        <script>
+            console.log(model);
+        </script>
+        @(Html.Grid(Model).Build(columns =>
+        {
+            columns.Add(model => model.Id).Titled("Id");
+            columns.Add(model => model.Name).Titled("Name");
+            columns.Add(model => model.PhoneNumber).Titled("PhoneNumber");
+            columns.Add(model => model.DateTime).Titled("Time");
+
+            columns.Add().Encoded(false).RenderedAs(model =>
+            {
+                return $@"
+                    <button class=""btn-delete"" asp-controller=""Contact"" asp-action=""DeleteContact"" type=""submit"" data-id=""{model.Id}"">Delete</button>
+                    <a class=""btn-cancel hide"">Cancel</a>
+                ";
+            }).Titled("Action");
+        })
+            )
+    </div>
+}

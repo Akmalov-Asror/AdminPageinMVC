@@ -27,9 +27,9 @@
 
 	<link rel="canonical" href="https://codepen.io/havardob/pen/ExvwGBr">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
-
+    <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
 
 	<style>
 		@@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
@@ -1183,11 +1183,13 @@
 				<div class="app-body-main-content">
 					<section class="service-section">
 						@RenderBody()
+                        <script src="~/js/mvc-grid/mvc-grid.js"></script>
 					</section>
 				</div>
 			</div>
 		</div>
 		<script id="rendered-js">
+			document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
 		</script>
 		@await RenderSectionAsync("Scripts", required: false)
 	</body>

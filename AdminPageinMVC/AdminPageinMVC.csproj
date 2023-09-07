@@ -23,6 +23,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="NonFactors.Grid.Core.Mvc6" Version="7.2.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
   </ItemGroup>
 
@@ -31,7 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <_ContentIncludedByDefault Remove="Views\Contact\_ContactPage.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Course\_AddCourse.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Course\_ByIdCourse.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Course\_UpdateCourseInfo.cshtml" />
@@ -93,10 +93,6 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\Test\_AddTest.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Views\Contact\_ContactPage.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

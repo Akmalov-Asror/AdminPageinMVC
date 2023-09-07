@@ -15,20 +15,20 @@ public class ContactController : Controller
     public async Task<IActionResult> GetContacts()
     {
         var allContacts = await _contactRepository.GetAll();
-        return View("_ContactPage", allContacts);
+        return View(allContacts);
     }
     public async Task<IActionResult> DeleteContact(int id)
     {
         await _contactRepository.Delete(id);
         var contacts = await _contactRepository.GetAll();
-        return View("_ContactPage", contacts);
+        return View("GetContacts", contacts);
     }
     public async Task<IActionResult> AddContact() => View("_AddContact");
     
     [HttpPost]
     public async Task<IActionResult> AddContact(ContactDto contactDto)
     {
-        if (!ModelState.IsValid) return View("_ContactPage");
+        if (!ModelState.IsValid) return View("GetContacts");
         var addContact = new Contact()
         {
             Name = contactDto.name,
@@ -37,6 +37,6 @@ public class ContactController : Controller
         };
         await _contactRepository.AddContact(addContact);
         var allContacts = await _contactRepository.GetAll();
-        return View("_ContactPage", allContacts);
+        return View("GetContacts", allContacts);
     }
 }
