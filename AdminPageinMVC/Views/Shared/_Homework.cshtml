@@ -28,7 +28,7 @@
 	<link rel="canonical" href="https://codepen.io/havardob/pen/ExvwGBr">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
+    <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
 
 
 	<style>
@@ -1183,60 +1183,13 @@
 				<div class="app-body-main-content">
 					<section class="service-section">
 						@RenderBody()
+                        <script src="~/js/mvc-grid/mvc-grid.js"></script>
 					</section>
 				</div>
 			</div>
 		</div>
 		<script id="rendered-js">
-			document.addEventListener("DOMContentLoaded", function () {
-				const updateButtons = document.querySelectorAll(".btn-update");
-				const confirmButtons = document.querySelectorAll(".btn-confirm");
-				const cancelButtons = document.querySelectorAll(".btn-cancel");
-
-				updateButtons.forEach((updateButton, index) => {
-					updateButton.addEventListener("click", () => {
-						toggleEditMode(index);
-					});
-
-					confirmButtons[index].addEventListener("click", () => {
-						// Form submit logic here
-						// You can retrieve form and input values using JavaScript DOM manipulation
-						// and then submit the form using form.submit()
-					});
-
-					cancelButtons[index].addEventListener("click", () => {
-						toggleViewMode(index);
-					});
-				});
-
-				function toggleEditMode(index) {
-					// Hide view mode elements, show edit mode elements
-					const viewModeElements = document.querySelectorAll(`.view-mode`);
-					const editModeElements = document.querySelectorAll(`.edit-mode`);
-
-					viewModeElements.forEach(element => {
-						element.style.display = "none";
-					});
-
-					editModeElements.forEach(element => {
-						element.style.display = "inline-block";
-					});
-				}
-
-				function toggleViewMode(index) {
-					// Hide edit mode elements, show view mode elements
-					const viewModeElements = document.querySelectorAll(`.view-mode`);
-					const editModeElements = document.querySelectorAll(`.edit-mode`);
-
-					viewModeElements.forEach(element => {
-						element.style.display = "inline-block";
-					});
-
-					editModeElements.forEach(element => {
-						element.style.display = "none";
-					});
-				}
-			});
+			document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
 		</script>
 		@await RenderSectionAsync("Scripts", required: false)
 	</body>

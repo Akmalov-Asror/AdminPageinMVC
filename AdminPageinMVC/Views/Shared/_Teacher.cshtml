@@ -29,7 +29,7 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
-
+    <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
 
 	<style>
 		@@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
@@ -1190,61 +1190,13 @@
 				<div class="app-body-main-content">
 					<section class="service-section">
 						@RenderBody()
+                        <script src="~/js/mvc-grid/mvc-grid.js"></script>
 					</section>
 				</div>
 			</div>
 		</div>
 		<script id="rendered-js">
-			document.addEventListener("DOMContentLoaded", function () {
-				const updateButtons = document.querySelectorAll(".btn-update");
-				const confirmButtons = document.querySelectorAll(".btn-confirm");
-				const deleteButtons = document.querySelectorAll(".btn-delete");
-				const cancelButtons = document.querySelectorAll(".btn-cancel");
-				const viewModes = document.querySelectorAll(".view-mode");
-				const editModes = document.querySelectorAll(".edit-mode");
-
-				updateButtons.forEach(function (button, index) {
-					button.addEventListener("click", function () {
-						toggleEditMode(index);
-					});
-				});
-
-				confirmButtons.forEach(function (button, index) {
-					button.addEventListener("click", function () {
-						toggleViewMode(index);
-					});
-				});
-
-				cancelButtons.forEach(function (button, index) {
-					button.addEventListener("click", function () {
-						toggleViewMode(index);
-					});
-				});
-
-				function toggleEditMode(index) {
-					editModes[index * 2].classList.remove("hide");
-					editModes[index * 2 + 1].classList.remove("hide");
-					viewModes[index * 2].classList.add("hide");
-					viewModes[index * 2 + 1].classList.add("hide");
-					updateButtons[index].classList.add("hide");
-					confirmButtons[index].classList.remove("hide");
-					deleteButtons[index].classList.add("hide");
-					cancelButtons[index].classList.remove("hide");
-				}
-
-				function toggleViewMode(index) {
-					editModes[index * 2].classList.add("hide");
-					editModes[index * 2 + 1].classList.add("hide");
-					viewModes[index * 2].classList.remove("hide");
-					viewModes[index * 2 + 1].classList.remove("hide");
-					updateButtons[index].classList.remove("hide");
-					confirmButtons[index].classList.add("hide");
-					deleteButtons[index].classList.remove("hide");
-					cancelButtons[index].classList.add("hide");
-				}
-			});
-
-			
+			document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));	
 		</script>
 		@await RenderSectionAsync("Scripts", required: false)
 	</body>

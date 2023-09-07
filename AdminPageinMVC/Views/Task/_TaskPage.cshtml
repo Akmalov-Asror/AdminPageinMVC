@@ -1,60 +1,38 @@
-﻿@model System.Collections.Generic.List<AdminPageinMVC.Dto.TaskDTO>
+﻿@using NonFactors.Mvc.Grid;
+@model System.Collections.Generic.List<AdminPageinMVC.Dto.TaskDTO>
 
 @{
     Layout = "~/Views/Shared/_Task.cshtml";
 }
-<table class="user-table">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Lesson Id</th>
-        <th>DateTime</th>
-        <th>Process</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var homework in Model)
-    {
-        <tr>
-            <form action="@Url.Action("UpdateTask", "Task")" method="post">
-                <td>
-                    <span>@homework.Id</span>
-                </td>
-                <td>
-                    <span class="view-mode">@homework.Title</span>
-                    <input type="text" class="edit-mode hide" name="title" value="@homework.Title" />
-                    <input type="hidden" name="id" value="@homework.Id" />
-                </td>
-                <td>
-                    <span class="view-mode">@homework.Description</span>
-                    <input type="text" class="edit-mode hide" name="description" value="@homework.Description" />
-                </td>
-                <td>
-                    <span class="view-mode">@homework.Lesson.Id</span>
-                    <input type="text" class="edit-mode hide" name="lessonId" value="@homework.Lesson.Id" />
-                </td>
-                <td>
-                    <span class="view-mode">@homework.DateTime</span>
-                    <input type="text" class="edit-mode hide" name="lessonId" value="@homework.DateTime" />
-                </td>
-                <td>
-                    <span class="view-mode">@homework.Process</span>
-                    <input type="text" class="edit-mode hide" name="lessonId" value="@homework.Process" />
-                </td>
-                <td>
-                    <a class="btn-update">Update</a>
-                    <button class="btn-confirm hide" asp-controller="Task" asp-action="UpdateTask" type="submit">Confirm</button>
-                    <button class="btn-delete" asp-controller="Task" asp-action="DeleteTask" type="submit">Delete</button>
-                    <a class="btn-cancel hide">Cancel</a>
-                </td>
-            </form>
-        </tr>
-    }
-    </tbody>
-</table>
+
+
+
+<div class="user-table">
+    @(Html
+        .Grid(Model)
+        .Build(columns =>
+        {
+            columns.Add(model => model.Id).Titled("Id").Filterable(true).Sortable(true);
+            columns.Add(model => model.Title).Titled("Title").Filterable(true).Sortable(true);
+            columns.Add(model => model.Description).Titled("Description").Filterable(true).Sortable(true);
+            columns.Add(model => model.Lesson.Id).Titled("Lesson Id").Filterable(true).Sortable(true);
+            columns.Add(model => model.DateTime).Titled("DateTime").Filterable(true).Sortable(true);
+            columns.Add(model => model.Process).Titled("Process").Filterable(true).Sortable(true);
+            columns.Add()
+                .Encoded(false)
+                .RenderedAs(model =>
+                {
+                    return $@"
+                        <a class=""btn-update"">Update</a>
+                        <button class=""btn-confirm hide"" asp-controller=""Task"" asp-action=""UpdateTask"" type=""submit"">Confirm</button>
+                        <button class=""btn-delete"" asp-controller=""Task"" asp-action=""DeleteTask"" type=""submit"">Delete</button>
+                        <a class=""btn-cancel hide"">Cancel</a>
+                    ";
+                })
+                .Titled("Actions");
+        })
+)
+</div>
 
 <div class="center-align">
     <a class="waves-effect waves-light btn" href="@Url.Action("AddTask", "Task")">Create New Education</a>

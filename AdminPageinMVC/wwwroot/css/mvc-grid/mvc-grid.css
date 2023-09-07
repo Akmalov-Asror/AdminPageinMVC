@@ -19,6 +19,7 @@
     font-size: 1em;
 }
 
+
 .mvc-grid-table {
     overflow-y: auto;
 }
@@ -31,7 +32,6 @@
 
         .mvc-grid-table > table > thead > tr > th {
             background-clip: padding-box;
-            background-color: #f7f7f7;
             position: relative;
         }
 
@@ -65,7 +65,7 @@
 .mvc-grid-filter {
     font-family: GridGlyphs, sans-serif;
     transition: background-color 0.5s;
-    background: rgb(0 0 0 / 0.03);
+    background-color: white;
     font-size: inherit;
     position: absolute;
     font-weight: bold;
@@ -101,6 +101,7 @@
         font-size: 0.9em;
         content: "\0044";
         opacity: 0.15;
+        color: #fff;
     }
 
     .mvc-grid-sort::before {
@@ -108,6 +109,7 @@
         font-size: 0.9em;
         content: "\0043";
         opacity: 0.15;
+        color: #fff;
     }
 
     .mvc-grid-sort span {
@@ -165,6 +167,7 @@
 }
 
 .mvc-grid-excel-mode .sortable.filterable {
+
     padding-right: 5.5em;
 }
 

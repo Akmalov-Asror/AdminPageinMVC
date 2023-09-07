@@ -1102,102 +1102,105 @@
 <body>
 
 	<body translate="no">
-		<div class="app">
-			<header class="app-header">
-				<div class="app-header-logo">
-					<div class="logo">
-						<span class="logo-icon">
-							<img src="https://assets.codepen.io/285131/almeria-logo.svg" />
-						</span>
-						<h1 class="logo-title">
-							<span>FGF</span>
-							<span>Invoker</span>
-						</h1>
-					</div>
-				</div>
-				<div class="app-header-navigation">
-					<div class="tabs tabs--active">
-						<a class="tab user-item" data-tooltip="users" method="get" asp-controller="User" asp-action="GetUserList">
-							Users
-						</a>
-						<a class="tab user-item" data-tooltip="adduser" method="get" asp-controller="User" asp-action="AddUser">
-							Add User
-						</a>
-						<a class="tab user-item" data-tooltip="usercourse" method="get" asp-controller="User" asp-action="GetUserCourses">
-							User Courses
-						</a>
-						<a class="tab user-item" data-tooltip="userresult" method="get" asp-controller="User" asp-action="GetUserResults">
-							User Result
-						</a>
-						<a class="tab user-item" data-tooltip="userfeedback" method="get" asp-controller="User" asp-action="GetUserFeedbacks">
-							User Feedback
-						</a>
-					</div>
-				</div>
-				<div class="app-header-actions">
-					<button class="user-profile">
-						<span>Akmalov Asror</span>
-						<span>
-							<i style="width: 42px; height: 42px; border-radius:50px; padding-top : 20px ;border: 1px solid grey" class="fa-regular fa-user fa-xl"></i>
-						</span>
-					</button>
-				</div>
-				<div class="app-header-mobile">
-					<button class="icon-button large">
-						<i class="ph-list"></i>
-					</button>
-				</div>
+    <div class="app">
+        <header class="app-header">
+            <div class="app-header-logo">
+                <div class="logo">
+                    <span class="logo-icon">
+                        <img src="https://assets.codepen.io/285131/almeria-logo.svg" />
+                    </span>
+                    <h1 class="logo-title">
+                        <span>FGF</span>
+                        <span>Invoker</span>
+                    </h1>
+                </div>
+            </div>
+            <div class="app-header-navigation">
+                <div class="tabs tabs--active">
+                    <a class="tab user-item" data-tooltip="users" method="get" asp-controller="User" asp-action="GetUserList">
+                        Users
+                    </a>
+                    <a class="tab user-item" data-tooltip="adduser" method="get" asp-controller="User" asp-action="AddUser">
+                        Add User
+                    </a>
+                    <a class="tab user-item" data-tooltip="usercourse" method="get" asp-controller="User" asp-action="GetUserCourses">
+                        User Courses
+                    </a>
+                    <a class="tab user-item" data-tooltip="userresult" method="get" asp-controller="User" asp-action="GetUserResults">
+                        User Result
+                    </a>
+                    <a class="tab user-item" data-tooltip="userfeedback" method="get" asp-controller="User" asp-action="GetUserFeedbacks">
+                        User Feedback
+                    </a>
+                </div>
+            </div>
+            <div class="app-header-actions">
+                <button class="user-profile">
+                    <span>Akmalov Asror</span>
+                    <span>
+                        <i style="width: 42px; height: 42px; border-radius:50px; padding-top : 20px ;border: 1px solid grey" class="fa-regular fa-user fa-xl"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="app-header-mobile">
+                <button class="icon-button large">
+                    <i class="ph-list"></i>
+                </button>
+            </div>
 
-			</header>
-			<div class="app-body">
-				<div class="app-body-navigation">
-					<nav class="navigation">
-						<a class="a user active"  asp-controller="User" asp-action="GetUserList">
-							<span>User</span>
-						</a>
-						<a class="a teacher" asp-controller="Teacher" asp-action="GetTeacherList">
-							<span>Teacher</span>
-						</a>
-						<a class="a"  asp-controller="Course" asp-action="GetCourseList">
-							<span>Course</span>
-						</a>
-						<a class="a" asp-controller="Education" asp-action="GetAllEducation">
-							<span>AboutCourse</span>
-						</a>
-						<a class="a" asp-controller="Lesson" asp-action="GetAllLesson">
-							<span>Lesson</span>
-						</a>
-						<a class="a" asp-controller="Homework" asp-action="GetAllHomework">
-							<span>Homework</span>
-						</a>
-                        <a class="a" asp-controller="Task" asp-action="GetAllTask">
-                            <span>Task</span>
-                        </a>
-                        <a class="a" asp-controller="Test" asp-action="GetAllTest">
-                            <span>Test</span>
-                        </a>
-                        <a class="a" asp-controller="Contact" asp-action="GetContacts">
-                            <span>Contact</span>
-                        </a>
-						<a class="a" asp-controller="Result" asp-action="GetResults">
-                            <span>Result</span>
-                        </a>
-					</nav>
-					<footer class="footer">
-						<div>
-							MDY ©<br />
-							All Rights Reserved 2023
-						</div>
-					</footer>
-				</div>
-				<div class="app-body-main-content">
-					<section class="service-section">
-						@RenderBody()
-					</section>
-				</div>
-			</div>
-		</div>
+        </header>
+        <div class="app-body">
+            <div class="app-body-navigation">
+                <nav class="navigation">
+                    <a class="a user active"  asp-controller="User" asp-action="GetUserList">
+                        <span>User</span>
+                    </a>
+                    <a class="a teacher" asp-controller="Teacher" asp-action="GetTeacherList">
+                        <span>Teacher</span>
+                    </a>
+                    <a class="a"  asp-controller="Course" asp-action="GetCourseList">
+                        <span>Course</span>
+                    </a>
+                    <a class="a" asp-controller="Education" asp-action="GetAllEducation">
+                        <span>AboutCourse</span>
+                    </a>
+                    <a class="a" asp-controller="Lesson" asp-action="GetAllLesson">
+                        <span>Lesson</span>
+                    </a>
+                    <a class="a" asp-controller="Homework" asp-action="GetAllHomework">
+                        <span>Homework</span>
+                    </a>
+                    <a class="a" asp-controller="Task" asp-action="GetAllTask">
+                        <span>Task</span>
+                    </a>
+                    <a class="a" asp-controller="Test" asp-action="GetAllTest">
+                        <span>Test</span>
+                    </a>
+                    <a class="a" asp-controller="Contact" asp-action="GetContacts">
+                        <span>Contact</span>
+                    </a>
+                    <a class="a" asp-controller="Result" asp-action="GetResults">
+                        <span>Result</span>
+                    </a>
+                </nav>
+                <footer class="footer">
+                    <div>
+                        MDY ©<br />
+                        All Rights Reserved 2023
+                    </div>
+                </footer>
+            </div>
+            <div class="app-body-main-content">
+                <section class="service-section">
+                    @RenderBody()
+                    <script src="~/js/mvc-grid/mvc-grid.js"></script>
+                </section>
+            </div>
+        </div>
+    </div>
+
 	<script id="rendered-js">
+			document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
 			document.addEventListener("DOMContentLoaded", function () {
 				const updateButtons = document.querySelectorAll(".btn-update");
 				const confirmButtons = document.querySelectorAll(".btn-confirm");

@@ -28,7 +28,7 @@
 	<link rel="canonical" href="https://codepen.io/havardob/pen/ExvwGBr">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
+    <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
 
 
 	<style>
@@ -1189,11 +1189,13 @@
 				<div class="app-body-main-content">
 					<section class="service-section">
 						@RenderBody()
+                        <script src="~/js/mvc-grid/mvc-grid.js"></script>
 					</section>
 				</div>
 			</div>
 		</div>
 		<script id="rendered-js">
+			document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
 		</script>
 		@await RenderSectionAsync("Scripts", required: false)
 	</body>
