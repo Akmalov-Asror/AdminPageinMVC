@@ -33,7 +33,7 @@ public class ContactController : Controller
         {
             Name = contactDto.name,
             PhoneNumber = contactDto.phoneNumber,
-            DateTime = DateTimeOffset.UtcNow
+            DateTime = "12.09.2023"
         };
         await _contactRepository.AddContact(addContact);
         var allContacts = await _contactRepository.GetAll();

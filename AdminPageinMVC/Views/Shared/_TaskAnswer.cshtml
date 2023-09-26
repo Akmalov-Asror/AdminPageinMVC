@@ -28,8 +28,8 @@
 	<link rel="canonical" href="https://codepen.io/havardob/pen/ExvwGBr">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
 
+	<link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
 
 	<style>
 		@@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
@@ -1116,11 +1116,8 @@
 				</div>
 				<div class="app-header-navigation">
 					<div class="tabs">
-						<a class="tab" method="get" asp-controller="Task" asp-action="GetAllTask">
-                            Task List
-						</a>
-						<a class="tab" method="get" asp-controller="Task" asp-action="AddTask">
-							Add Task
+						<a class="tab" method="get" asp-controller="TaskAnswer" asp-action="GetAllAnswer">
+							Test List
 						</a>
 					</div>
 				</div>
@@ -1148,7 +1145,7 @@
 						<a class="a teacher" asp-controller="Teacher" asp-action="GetTeacherList">
 							<span>Teacher</span>
 						</a>
-						<a class="a" asp-controller="Course" asp-action="GetCourseList">
+						<a class="a " asp-controller="Course" asp-action="GetCourseList">
 							<span>Course</span>
 						</a>
 						<a class="a" asp-controller="Education" asp-action="GetAllEducation">
@@ -1160,21 +1157,21 @@
 						<a class="a" asp-controller="Homework" asp-action="GetAllHomework">
 							<span>Homework</span>
 						</a>
-						<a class="a active" asp-controller="Task" asp-action="GetAllTask">
+						<a class="a" asp-controller="Task" asp-action="GetAllTask">
 							<span>Task</span>
 						</a>
-                        <a class="a" asp-controller="Test" asp-action="GetAllTest">
-                            <span>Test</span>
-                        </a>
+						<a class="a active" asp-controller="Test" asp-action="GetAllTest">
+							<span>Test</span>
+						</a>
 						<a class="a" asp-controller="Contact" asp-action="GetContacts">
 							<span>Contact</span>
 						</a>
-                        <a class="a" asp-controller="Result" asp-action="GetResults">
-                            <span>Result</span>
-                        </a>
-                        <a class="a" asp-controller="TaskAnswer" asp-action="GetAllAnswer">
-                            <span>TaskAnswer</span>
-                        </a>
+						<a class="a" asp-controller="Result" asp-action="GetResults">
+							<span>Result</span>
+						</a>
+						<a class="a" asp-controller="TaskAnswer" asp-action="GetAllAnswer">
+							<span>TaskAnswer</span>
+						</a>
 					</nav>
 					<footer class="footer">
 						<div>
@@ -1186,7 +1183,7 @@
 				<div class="app-body-main-content">
 					<section class="service-section">
 						@RenderBody()
-                        <script src="~/js/mvc-grid/mvc-grid.js"></script>
+						<script src="~/js/mvc-grid/mvc-grid.js"></script>
 					</section>
 				</div>
 			</div>

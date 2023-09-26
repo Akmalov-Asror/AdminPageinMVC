@@ -40,6 +40,7 @@
     <_ContentIncludedByDefault Remove="Views\Homework\_ByIdHomework.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Homework\_HomeworkPage.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Result\UpdateResult.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\TaskAnswer\_TaskList.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Task\_AddTask.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Task\_ByIdTask.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Teacher\_AddTeacher.cshtml" />
@@ -97,6 +98,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\Result\UpdateResult.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\TaskAnswer\_TaskList.cshtml" />
   </ItemGroup>
 
 </Project>

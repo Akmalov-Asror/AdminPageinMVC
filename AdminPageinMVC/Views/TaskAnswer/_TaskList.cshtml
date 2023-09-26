@@ -1,0 +1,28 @@
+﻿@model List<AdminPageinMVC.Entity.TaskAnswer>
+@using NonFactors.Mvc.Grid
+@{
+    Layout = "~/Views/Shared/_Contact.cshtml";
+}
+
+@if (Model == null || Model.Count == 0)
+{
+    <p>Hamma ma'lumotlar kiritilmagan</p>
+    <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
+}
+else
+{
+
+    <div class="user-table">
+        <script>
+            console.log(model);
+        </script>
+        @(Html.Grid(Model).Build(columns =>
+        {
+            columns.Add(model => model.Id).Titled("Id").Filterable(true).Sortable(true);
+            columns.Add(model => model.Task).Titled("Task").Filterable(true).Sortable(true);
+            columns.Add(model => model.Answer).Titled("Answer").Filterable(true).Sortable(true);
+            columns.Add(model => model.fileUrl).Titled("fileUrl").Filterable(true).Sortable(true);
+        })
+            )
+    </div>
+}
