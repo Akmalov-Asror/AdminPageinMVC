@@ -249,9 +249,6 @@ namespace AdminPageinMVC.Migrations
                     b.Property<int>("TaskId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("fileUrl")
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.HasIndex("TaskId");

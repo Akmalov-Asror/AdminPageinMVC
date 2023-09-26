@@ -387,7 +387,6 @@ namespace AdminPageinMVC.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Answer = table.Column<string>(type: "text", nullable: true),
-                    fileUrl = table.Column<string>(type: "text", nullable: true),
                     TaskId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>

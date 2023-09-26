@@ -13,7 +13,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AdminPageinMVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230925044946_Init")]
+    [Migration("20230926063437_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -251,9 +251,6 @@ namespace AdminPageinMVC.Migrations
 
                     b.Property<int>("TaskId")
                         .HasColumnType("integer");
-
-                    b.Property<string>("fileUrl")
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

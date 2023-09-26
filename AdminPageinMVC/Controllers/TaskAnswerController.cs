@@ -10,10 +10,11 @@ public class TaskAnswerController : Controller
 
     public TaskAnswerController(ITaskAnswerRepository taskAnswerRepository) => _taskAnswerRepository = taskAnswerRepository;
 
-    [HttpPost]
+    [HttpGet]
     public async Task<IActionResult> GetAllAnswer()
     {
         var taskAnswer = await _taskAnswerRepository.Get();
-        return View("_TaskList", "taskAnswer");
+        Console.Write(taskAnswer);
+        return View("_TaskList", taskAnswer);   
     }
 }
